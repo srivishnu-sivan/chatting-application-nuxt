@@ -9,7 +9,7 @@
 	>
 		<n-spin :show="loading">
 			<div style="height: 250px; width: calc(100% - 4px); margin: 0 auto; overflow: hidden">
-				<vuevectormap
+				<!-- <vuevectormap
 					v-if="!loading"
 					ref="map"
 					map="world"
@@ -18,7 +18,7 @@
 					:options="options"
 					@loaded="loaded"
 					@regionTooltipShow="regionTooltipShow"
-				></vuevectormap>
+				></vuevectormap> -->
 			</div>
 		</n-spin>
 	</n-card>

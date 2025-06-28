@@ -3,20 +3,20 @@
 		<div class="wrap flex items-center justify-end gap-3">
 			<Logo mini class="cursor-pointer" @click="openNav()" />
 
-			<ClientOnly>
+			<!-- <ClientOnly>
 				<Breadcrumb class="grow" />
-			</ClientOnly>
+			</ClientOnly> -->
 
 			<ClientOnly>
 				<PinnedPages />
 			</ClientOnly>
 
 			<div class="bubble flex items-center">
-				<Search />
-				<LocaleSwitch />
-				<FullscreenSwitch />
+				<!-- <Search /> -->
+				<!-- <LocaleSwitch /> -->
+				<!-- <FullscreenSwitch /> -->
 				<ThemeSwitch />
-				<Notifications />
+				<!-- <Notifications /> -->
 				<Avatar />
 			</div>
 		</div>

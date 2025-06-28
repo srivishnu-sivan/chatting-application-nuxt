@@ -9,7 +9,7 @@
 
 <script lang="ts" setup>
 import { NScrollbar } from "naive-ui"
-
+import { watch } from "vue"
 import Highlight from "@tiptap/extension-highlight"
 import TaskItem from "@tiptap/extension-task-item"
 import TaskList from "@tiptap/extension-task-list"
@@ -18,9 +18,7 @@ import Underline from "@tiptap/extension-underline"
 import Link from "@tiptap/extension-link"
 import StarterKit from "@tiptap/starter-kit"
 import { useEditor, EditorContent } from "@tiptap/vue-3"
-
 import MenuBar from "./MenuBar.vue"
-import { watch } from "vue"
 
 const text = defineModel<string>({ default: "" })
 
@@ -72,7 +70,7 @@ watch(text, val => {
 
 	&__header {
 		align-items: center;
-		background: var(--hover-005-color);
+		background: var(--bg-secondary-color);
 		display: flex;
 		flex: 0 0 auto;
 		flex-wrap: wrap;

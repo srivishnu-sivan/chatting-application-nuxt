@@ -87,6 +87,9 @@ onMounted(() => {
 	overflow-x: hidden;
 	overflow-y: auto;
 	background-color: var(--bg-sidebar);
+	z-index: -1;
+	transition: all 0.3s var(--bezier-ease) 0s;
+	transform: translateX(-100%);
 	transition:
 		width var(--sidebar-anim-ease) var(--sidebar-anim-duration),
 		box-shadow var(--sidebar-anim-ease) var(--sidebar-anim-duration),
@@ -97,9 +100,7 @@ onMounted(() => {
 		overflow: hidden;
 	}
 
-	z-index: -1;
-	transition: all 0.3s var(--bezier-ease) 0s;
-	transform: translateX(-100%);
+	
 
 	@media (max-width: $sidebar-bp) {
 		&.opened {

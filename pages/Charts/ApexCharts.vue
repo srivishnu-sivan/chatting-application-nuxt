@@ -3,13 +3,7 @@
 		<div class="page-header">
 			<div class="title">ApexCharts</div>
 			<div class="links">
-				<a
-					href="https://apexcharts.com/"
-					target="_blank"
-					alt="docs"
-					rel="nofollow noopener noreferrer"
-					class="ml-4"
-				>
+				<a href="https://apexcharts.com/" target="_blank" alt="docs" rel="nofollow noopener noreferrer">
 					<Icon :name="ExternalIcon" :size="16" />
 					docs
 				</a>

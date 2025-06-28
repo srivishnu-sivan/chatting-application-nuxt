@@ -60,7 +60,7 @@ onMounted(() => {
 	position: relative;
 	transition: padding var(--sidebar-anim-ease) var(--sidebar-anim-duration);
 	background-color: var(--bg-body);
-
+	transition: all var(--sidebar-anim-ease) var(--sidebar-anim-duration);
 	:deep() {
 		& > .n-scrollbar {
 			& > .n-scrollbar-rail {
@@ -88,7 +88,7 @@ onMounted(() => {
 			padding-left: 0px;
 		}
 
-		transition: all var(--sidebar-anim-ease) var(--sidebar-anim-duration);
+		
 
 		&.sidebar-opened {
 			//transform: scale(0.8) translateX(100%) rotateY(35deg);

@@ -5,18 +5,18 @@ import { RouterLink } from "vue-router"
 const CalendarIcon = "carbon:calendar"
 
 export default {
-	key: "Apps-Calendars-FullCalendar",
-	icon: renderIcon(CalendarIcon),
-	label: () =>
-		h(
-			RouterLink,
-			{
-				to: {
-					name: "Apps-Calendars-FullCalendar"
-				}
-			},
-			{ default: () => "Calendar" }
-		)
+	// key: "Apps-Calendars-FullCalendar",
+	// icon: renderIcon(CalendarIcon),
+	// label: () =>
+	// 	h(
+	// 		RouterLink,
+	// 		{
+	// 			to: {
+	// 				name: "Apps-Calendars-FullCalendar"
+	// 			}
+	// 		},
+	// 		{ default: () => "Calendar" }
+	// 	)
 
 	/*	
 	label: "Calendars",

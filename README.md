@@ -57,7 +57,7 @@ Follow these instructions to get the project running on your local machine.
 ### Prerequisites
 
   Go (version 1.18 or newer)
-  Node.js (version 16 or newer)
+  Node.js (version 16 or newer) 18.0 (prefered)
   Docker and Docker Compose
 
 ### 1. Clone the Repository

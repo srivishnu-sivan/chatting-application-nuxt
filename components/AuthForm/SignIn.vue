@@ -1,8 +1,8 @@
 <template>
 	<n-form ref="formRef" :model="model" :rules="rules">
-		<n-form-item path="email" label="Email">
+		<n-form-item path="username" label="Email">
 			<n-input
-				v-model:value="model.email"
+				v-model:value="model.username"
 				@keydown.enter="signIn"
 				placeholder="Example@email.com"
 				size="large"
@@ -22,8 +22,8 @@
 		</n-form-item>
 		<div class="flex flex-col items-end gap-6">
 			<div class="flex justify-between w-full">
-				<n-checkbox size="large">Remember me</n-checkbox>
-				<n-button text type="primary" @click="emit('forgot-password')">Forgot Password?</n-button>
+				<!-- <n-checkbox size="large">Remember me</n-checkbox> -->
+				<!-- <n-button text type="primary" @click="emit('forgot-password')">Forgot Password?</n-button> -->
 			</div>
 			<div class="w-full">
 				<n-button type="primary" @click="signIn" class="!w-full" size="large">Sign in</n-button>
@@ -50,7 +50,7 @@ import { useAuthStore } from "@/stores/auth"
 import { useRouter } from "vue-router"
 
 interface ModelType {
-	email: string | null
+	username: string | null
 	password: string | null
 }
 
@@ -58,8 +58,8 @@ const router = useRouter()
 const formRef = ref<FormInst | null>(null)
 const message = useMessage()
 const model = ref<ModelType>({
-	email: "admin@admin.com",
-	password: "password"
+	username: "",
+	password: ""
 })
 
 const emit = defineEmits<{
@@ -67,7 +67,7 @@ const emit = defineEmits<{
 }>()
 
 const rules: FormRules = {
-	email: [
+	username: [
 		{
 			required: true,
 			trigger: ["blur"],
@@ -83,13 +83,19 @@ const rules: FormRules = {
 	]
 }
 
-function signIn(e: Event) {
+async function signIn(e: Event) {
 	e.preventDefault()
-	formRef.value?.validate((errors: Array<FormValidationError> | undefined) => {
+ formRef.value?.validate(async(errors: Array<FormValidationError> | undefined) => {
+		console.log("error===>", errors);
+		
 		if (!errors) {
-			if (model.value.email === "admin@admin.com" && model.value.password === "password") {
-				useAuthStore().setLogged()
-				router.push({ path: "/", replace: true })
+			if (model.value.username  && model.value.password ) {
+				const response = await useAuthStore().setLogged(model.value)
+				console.log("response===>", response);
+				
+				if (response) {
+					router.push({ path: "/companylist/companylist", replace: true })
+				}
 			} else {
 				message.error("Invalid credentials")
 			}

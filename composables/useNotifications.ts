@@ -1,21 +1,34 @@
-import { computed, ref } from "vue"
+import { computed, ref, h } from "vue"
 import dayjs from "@/utils/dayjs"
+import { NButton } from "naive-ui"
+import _uniqBy from "lodash/uniqBy"
+import { useGlobalActions, type NotificationObject } from "./useGlobalActions"
 
-type NotificationType = "message" | "reminder" | "alert" | "news" | string
-interface Notification {
-	id: number
+export type NotificationCategory = "message" | "reminder" | "alert" | "news" | string
+export type NotificationType = "success" | "info" | "warning" | "error" | "default" | undefined
+export interface Notification {
+	id: number | string
+	category: NotificationCategory
 	type: NotificationType
 	title: string
 	description: string
 	read: boolean
 	date: string
 	action?: () => void
+	actionTitle?: string
+}
+export interface PrependOptions {
+	/** prepend and send a notification */
+	sendNotify?: boolean
+	/** send a notification only if there isn't any item with match id/type/category */
+	autoNotify?: boolean
 }
 
 const items: Notification[] = [
 	{
 		id: 1,
-		type: "message",
+		category: "message",
+		type: "info",
 		title: "New Email",
 		description: "Important document to read",
 		read: false,
@@ -23,7 +36,8 @@ const items: Notification[] = [
 	},
 	{
 		id: 2,
-		type: "reminder",
+		category: "reminder",
+		type: "warning",
 		title: "Appointment",
 		description: "Meeting with client at 3:00 PM",
 		read: false,
@@ -31,7 +45,8 @@ const items: Notification[] = [
 	},
 	{
 		id: 9,
-		type: "alert",
+		category: "alert",
+		type: "error",
 		title: "Alert",
 		description: "Limited-time super offer on desired product",
 		read: true,
@@ -39,7 +54,8 @@ const items: Notification[] = [
 	},
 	{
 		id: 5,
-		type: "news",
+		category: "news",
+		type: "success",
 		title: "News",
 		description: "Networking event in your city",
 		read: false,
@@ -47,7 +63,8 @@ const items: Notification[] = [
 	},
 	{
 		id: 3,
-		type: "reminder",
+		category: "reminder",
+		type: "warning",
 		title: "Reminder",
 		description: "Overdue bill payment",
 		read: true,
@@ -55,7 +72,8 @@ const items: Notification[] = [
 	},
 	{
 		id: 4,
-		type: "reminder",
+		category: "reminder",
+		type: "warning",
 		title: "Deadline",
 		description: "Submit report by tomorrow",
 		read: true,
@@ -63,7 +81,8 @@ const items: Notification[] = [
 	},
 	{
 		id: 6,
-		type: "message",
+		category: "message",
+		type: "info",
 		title: "Message",
 		description: "New comment on your post",
 		read: false,
@@ -71,7 +90,8 @@ const items: Notification[] = [
 	},
 	{
 		id: 7,
-		type: "reminder",
+		category: "reminder",
+		type: "warning",
 		title: "Reminder",
 		description: "Complete purchase in your online cart",
 		read: false,
@@ -79,7 +99,8 @@ const items: Notification[] = [
 	},
 	{
 		id: 8,
-		type: "reminder",
+		category: "reminder",
+		type: "warning",
 		title: "Invitation",
 		description: "Friend's birthday party",
 		read: true,
@@ -101,18 +122,75 @@ for (let i = 0; i < 30; i++) {
 }
 
 export function useNotifications() {
-	const hasNotifications = computed(() => list.value.filter(o => !o.read).length !== 0)
+	const hasUnread = computed(() => list.value.filter(o => !o.read).length !== 0)
+	const hasNotifications = computed(() => list.value.length !== 0)
 
 	return {
 		list,
+		hasUnread,
 		hasNotifications,
+		setRead: (id: string | number) => {
+			const item = list.value.find(o => o.id === id)
+			if (item) {
+				item.read = true
+			}
+		},
 		setAllRead: () => {
 			for (const item of list.value) {
 				item.read = true
 			}
 		},
-		prepend: (newItem: Notification) => {
-			list.value = [newItem, ...list.value]
+		deleteOne: (id: string | number) => {
+			list.value = list.value.filter(o => o.id !== id)
+		},
+		deleteAll: () => {
+			list.value = []
+		},
+		prepend: (newItem: Notification, options?: PrependOptions) => {
+			let sendNotify = options?.sendNotify || false
+			const autoNotify = options?.autoNotify || false
+
+			if (autoNotify) {
+				const item = list.value.find(
+					o => o.id === newItem.id && o.type === newItem.type && o.category === newItem.category
+				)
+
+				if (!item) {
+					sendNotify = true
+				}
+			}
+
+			if (sendNotify) {
+				const notify: NotificationObject = {
+					title: newItem.title,
+					content: newItem.description,
+					type: newItem.type,
+					meta: newItem.date,
+					action: undefined,
+					duration: 3000,
+					keepAliveOnHover: true
+				}
+
+				if (newItem.action) {
+					// @ts-ignore
+					notify.action = () =>
+						h(
+							NButton,
+							{
+								text: true,
+								type: newItem.type,
+								onClick: newItem.action
+							},
+							{
+								default: () => newItem.actionTitle || "Details"
+							}
+						)
+				}
+
+				useGlobalActions().notification(notify)
+			}
+
+			list.value = _uniqBy([newItem, ...list.value], o => o.id)
 		}
 	}
 }

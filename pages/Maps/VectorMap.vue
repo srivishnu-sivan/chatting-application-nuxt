@@ -3,13 +3,7 @@
 		<div class="page-header">
 			<div class="title">Vector Map</div>
 			<div class="links">
-				<a
-					href="https://jvm-docs.vercel.app/"
-					target="_blank"
-					alt="docs"
-					rel="nofollow noopener noreferrer"
-					class="ml-4"
-				>
+				<a href="https://jvm-docs.vercel.app/" target="_blank" alt="docs" rel="nofollow noopener noreferrer">
 					<Icon :name="ExternalIcon" :size="16" />
 					docs
 				</a>
@@ -19,7 +13,7 @@
 		<n-card ref="card" contentStyle="padding:0">
 			<n-spin :show="loading">
 				<div style="height: 60vh; width: 100%; overflow: hidden" class="p-5">
-					<vuevectormap
+					<!-- <vuevectormap
 						v-if="!loading"
 						ref="map"
 						map="world"
@@ -28,7 +22,7 @@
 						:options="options"
 						@loaded="loaded"
 						@regionTooltipShow="regionTooltipShow"
-					></vuevectormap>
+					></vuevectormap> -->
 				</div>
 			</n-spin>
 		</n-card>

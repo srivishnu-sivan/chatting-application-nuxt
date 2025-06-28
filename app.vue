@@ -4,6 +4,17 @@
 			<ClientOnly> IS FOR DEMO PURPOSE. YOU CAN REMOVE IT IN PRODUCTION
 				
 			IT IS REQUIRED FOR RANDOM DEMO DATA
+
+
+			The page transition could create issues in Nuxt projects with current versions.
+			There are methods to avoid these problems, and Pinx provides 2 of them.
+			By default, Method A is used.
+
+			Method A: involves pausing navigation until the page transition is considered complete.
+			Method B: involves halting navigation until the page transition is considered complete.
+			
+			You can find Method A in the file /plugins/router-transition.client.ts
+			You can find Method B in the file /middleware/route.global.ts
 		-->
 		<ClientOnly>
 			<component :is="layoutComponent" :class="[`theme-${themeName}`, `layout-${layout}`, themeName]">

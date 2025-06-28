@@ -25,7 +25,7 @@ export const useThemeStore = defineStore("theme", {
 		routerTransition: RouterTransition.FadeUp,
 		routerTransitionDuration: 0.3,
 		boxed: {
-			enabled: true,
+			enabled: false,
 			toolbar: true,
 			width: 1600
 		},
@@ -39,7 +39,7 @@ export const useThemeStore = defineStore("theme", {
 			closeWidth: 64
 		},
 		footer: {
-			show: true
+			show: false
 		},
 		responsive: {
 			breakpoint: 700,

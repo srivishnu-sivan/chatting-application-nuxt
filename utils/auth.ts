@@ -20,12 +20,12 @@ export function authCheck(route: RouteLocationNormalized) {
 		if (useAuthStore().isLogged) {
 			if (roles) {
 				if (useAuthStore().isRoleGranted(roles)) {
-					return navigateTo(authRedirect || "/")
+					return navigateTo(authRedirect || "/companylist/companylist")
 				} else {
 					return navigateTo(route.path)
 				}
 			}
-			return navigateTo(authRedirect || "/")
+			return navigateTo(authRedirect || "/companylist/companylist");
 		}
 	}
 }

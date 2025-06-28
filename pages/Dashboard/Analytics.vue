@@ -155,7 +155,7 @@
 
 					<!-- timeline -->
 					<div class="grow timeline-wrap">
-						<CardExtra5
+						<!-- <CardExtra5
 							long
 							lazy
 							hideImage
@@ -164,7 +164,7 @@
 							:segmented="{
 								content: true
 							}"
-						/>
+						/> -->
 					</div>
 				</div>
 			</div>

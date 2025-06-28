@@ -1,4 +1,5 @@
 <template>
+
 	<nav class="nav" :class="[{ collapsed }, mode]">
 		<n-menu
 			ref="menu"

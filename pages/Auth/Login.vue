@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-		<div class="settings flex items-center justify-between" v-if="!isLogged">
+		<!-- <div class="settings flex items-center justify-between" v-if="!isLogged">
 			<div class="layout">
 				<n-button quaternary circle @click="align = 'left'">
 					<template #icon>
@@ -45,9 +45,9 @@
 					</template>
 				</n-button>
 			</div>
-		</div>
+		</div> -->
 		<div class="flex wrapper justify-center" v-if="!isLogged">
-			<div class="image-box basis-2/3" v-if="align === 'right'"></div>
+			
 			<div class="form-box basis-1/3 flex items-center justify-center" :class="{ centered: align === 'center' }">
 				<AuthForm :type="type" />
 			</div>
@@ -90,7 +90,7 @@ definePageMeta({
 type Align = "left" | "center" | "right"
 
 const route = useRoute()
-const align = ref<Align>("left")
+const align = ref<Align>("center")
 const activeColor = ref("")
 const type = ref<FormType | undefined>(undefined)
 

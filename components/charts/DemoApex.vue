@@ -1,6 +1,6 @@
 <template>
 	<ClientOnly>
-		<apexchart
+		<!-- <apexchart
 			ref="chart"
 			width="100%"
 			height="100%"
@@ -10,7 +10,7 @@
 			:series="series"
 			:class="{ 'time-buttons': timeButtons }"
 			:style="legendOffset && `--legend-offset:${legendOffset}px`"
-		></apexchart>
+		></apexchart> -->
 	</ClientOnly>
 </template>
 
@@ -20,6 +20,7 @@ import { computed, onMounted, toRefs, watch, watchEffect, nextTick } from "vue"
 import { ref } from "vue"
 import { getAreaOpts, getBarOpts, getMonthsSeries, getWeekSeries, getYearsSeries } from "./data"
 import { getChartColors, getHighlightMap } from "./utils"
+import "@/assets/scss/apexchart-override.scss"
 
 export interface VueApexChartsComponent {
 	toggleSeries(seriesName: string): any

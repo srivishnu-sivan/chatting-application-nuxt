@@ -9,7 +9,6 @@
 						target="_blank"
 						alt="docs"
 						rel="nofollow noopener noreferrer"
-						class="ml-4"
 					>
 						<Icon :name="ExternalIcon" :size="16" />
 						docs

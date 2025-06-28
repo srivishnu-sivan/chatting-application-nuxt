@@ -32,10 +32,10 @@
 		<div class="attachments flex" v-if="email.attachments.length">
 			<Icon :size="16" :name="AttachmentIcon"></Icon>
 		</div>
-		<div class="date opacity-70">
+		<div class="date text-secondary-color">
 			{{ email.dateText }}
 		</div>
-		<div class="actions opacity-70 flex items-start gap-3">
+		<div class="actions text-secondary-color flex items-start gap-3">
 			<n-button text>
 				<Icon :size="20" :name="TrashIcon"></Icon>
 			</n-button>
@@ -112,16 +112,8 @@ function toggleStar(email: Email) {
 	line-height: 1.2;
 	white-space: nowrap;
 	cursor: pointer;
-	opacity: 0;
 	transition: all 0.1s ease-in;
-	animation: email-fade 0.3s forwards;
 	container-type: inline-size;
-
-	@for $i from 0 through 40 {
-		&:nth-child(#{$i}) {
-			animation-delay: $i * 0.05s;
-		}
-	}
 
 	.title {
 		overflow: hidden;
@@ -165,16 +157,6 @@ function toggleStar(email: Email) {
 		.attachments,
 		.date {
 			display: none;
-		}
-	}
-
-	@keyframes email-fade {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
 		}
 	}
 

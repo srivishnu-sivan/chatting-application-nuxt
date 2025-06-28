@@ -1,21 +1,19 @@
 <template>
 	<l-map ref="map" v-model:zoom="zoom" :center="[47.41322, -1.219482]" :useGlobalLeaflet="false">
-		<!--
-						<l-tile-layer
-						url="http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
-						layer-type="base"
-						name="Stamen Watercolor"
-						attribution="Map tiles by <a href='http://stamen.com'>Stamen Design</a>, under <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='http://openstreetmap.org'>OpenStreetMap</a>, under <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>."
-						/>
-					-->
 		<l-tile-layer
-			url="https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
+			url="https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg"
+			layer-type="base"
+			name="Stamen Watercolor"
+			attribution="Map tiles by <a href='http://stamen.com'>Stamen Design</a>, under <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='http://openstreetmap.org'>OpenStreetMap</a>, under <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>."
+		/>
+		<l-tile-layer
+			url="https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.png"
 			layer-type="base"
 			name="Stamen Toner"
 			attribution="Map tiles by <a href='http://stamen.com'>Stamen Design</a>, under <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='http://openstreetmap.org'>OpenStreetMap</a>, under <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>."
 		></l-tile-layer>
 		<l-tile-layer
-			url="https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png"
+			url="https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.png"
 			layer-type="base"
 			name="Stamen Terrain"
 			attribution="Map tiles by <a href='http://stamen.com'>Stamen Design</a>, under <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='http://openstreetmap.org'>OpenStreetMap</a>, under <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>."

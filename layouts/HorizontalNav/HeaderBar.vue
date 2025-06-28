@@ -1,6 +1,6 @@
 <template>
 	<div class="header-bar flex items-center gap-3">
-		<Logo :mini="false" :dark="isDark" class="anim-wrap" />
+		<!-- <Logo :mini="false" :dark="isDark" class="anim-wrap" /> --> BD MANAGER
 		<n-scrollbar class="grow" x-scrollable>
 			<Navbar :collapsed="false" mode="horizontal"></Navbar>
 		</n-scrollbar>

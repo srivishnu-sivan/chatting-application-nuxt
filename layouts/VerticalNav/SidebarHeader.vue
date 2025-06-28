@@ -1,11 +1,12 @@
 <template>
 	<div class="sidebar-header flex items-center justify-between">
-		<div class="logo-box grow" :class="{ mini: logoMini }">
+		<div class="logo-box grow justify-center align-middle" :class="{ mini: logoMini }">
 			<Transition name="fade" mode="out-in">
-				<Logo :mini="false" :dark="true" class="anim-wrap" v-if="isDark && !logoMini" />
+				<!-- <Logo :mini="false" :dark="true" class="anim-wrap" v-if="isDark && !logoMini" />
 				<Logo :mini="false" :dark="false" class="anim-wrap" v-else-if="isLight && !logoMini" />
 				<Logo :mini="true" :dark="true" class="anim-wrap" v-else-if="isDark && logoMini" />
-				<Logo :mini="true" :dark="false" class="anim-wrap" v-else-if="isLight && logoMini" />
+				<Logo :mini="true" :dark="false" class="anim-wrap" v-else-if="isLight && logoMini" /> -->
+				<div>BD Manager</div>
 			</Transition>
 		</div>
 		<Transition name="fade" mode="out-in">

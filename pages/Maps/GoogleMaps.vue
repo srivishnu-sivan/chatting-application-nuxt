@@ -3,13 +3,7 @@
 		<div class="page-header">
 			<div class="title">Google Maps</div>
 			<div class="links">
-				<a
-					href="https://vue-map.netlify.app/"
-					target="_blank"
-					alt="docs"
-					rel="nofollow noopener noreferrer"
-					class="ml-4"
-				>
+				<a href="https://vue-map.netlify.app/" target="_blank" alt="docs" rel="nofollow noopener noreferrer">
 					<Icon :name="ExternalIcon" :size="16" />
 					docs
 				</a>

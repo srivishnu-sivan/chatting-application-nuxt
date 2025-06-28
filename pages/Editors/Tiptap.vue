@@ -8,7 +8,6 @@
 					target="_blank"
 					alt="docs"
 					rel="nofollow noopener noreferrer"
-					class="ml-4"
 				>
 					<Icon :name="ExternalIcon" :size="16" />
 					docs
@@ -23,12 +22,11 @@
 </template>
 
 <script setup lang="ts">
-import Icon from "@/components/common/Icon.vue"
-const ExternalIcon = "tabler:external-link"
-
-import Tiptap from "@/components/editors/Tiptap/index.vue"
 import { ref } from "vue"
+import Icon from "@/components/common/Icon.vue"
+import Tiptap from "@/components/editors/Tiptap/index.vue"
 
+const ExternalIcon = "tabler:external-link"
 const text = ref("<p>I’m running Tiptap with Vue.js. 🎉</p>")
 </script>
 
